@@ -2,7 +2,7 @@ FROM node:22-slim AS base
 
 ENV ARDUINO_CLI_VERSION=1.3.0
 ENV SENSEBOXCORE_VERSION=2.0.0
-ENV ARDUINO_SAMD_VERSION=1.8.13
+ENV ARDUINO_SAMD_VERSION=1.8.12
 ENV ARDUINO_AVR_VERSION=1.8.5
 ENV ESP32_VERSION=3.3.8
 ENV SENSEBOXCORE_URL=https://raw.githubusercontent.com/mariopesch/senseBoxMCU-core/master/package_sensebox_index.json
@@ -121,7 +121,12 @@ RUN arduino-cli lib install "Ethernet" && \
     arduino-cli lib install --git-url https://github.com/boschsensortec/Bosch-BSEC2-Library && \
     arduino-cli lib install "BME68x Sensor library" && \
     arduino-cli lib install "Sensirion I2C SEN66" && \
-    arduino-cli lib install --git-url https://github.com/sensebox/tflite-micro-arduino-examples
+    arduino-cli lib install --git-url https://github.com/sensebox/tflite-micro-arduino-examples && \
+    arduino-cli lib install "Adafruit SH110X" && \
+    arduino-cli lib install "Adafruit PWM Servo Driver Library" && \
+    arduino-cli lib install "Adafruit_VL53L0X"
+
+
 
 
 WORKDIR /app

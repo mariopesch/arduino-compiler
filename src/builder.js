@@ -10,7 +10,8 @@ const boardFQBNs = {
   sensebox: "arduino:avr:uno",
   "sensebox-esp32s2": "esp32:esp32:sensebox_mcu_esp32s2",
   "sensebox_mcu_eye": "esp32:esp32:sensebox_eye",
-  "xiao-esp32s3": "esp32:esp32:XIAO_ESP32S3",
+  "xiao-esp32s3":
+    "esp32:esp32:XIAO_ESP32S3:USBMode=default,CDCOnBoot=default,MSCOnBoot=msc,DFUOnBoot=default,UploadMode=cdc",
 };
 
 const validBoards = Object.keys(boardFQBNs);

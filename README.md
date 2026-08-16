@@ -17,7 +17,7 @@ You can now compile sketches through the exposed HTTP interface. Here is an exam
     curl \
       --request POST \
       --header "Content-type: application/json" \
-      --data '{"board":"sensebox-mcu", "sketch":"void setup() {\nSerial.begin(9600);\nSerial.println(\"Hello World\");\n}\nvoid loop() {}"}' \
+      --data '{"board":"xiao-esp32s3", "sketch":"void setup() {\nSerial.begin(9600);\nSerial.println(\"Hello World\");\n}\nvoid loop() {}"}' \
       http://localhost:3000/compile
 
 And download the sketch using `curl`:
