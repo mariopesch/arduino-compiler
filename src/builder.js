@@ -10,6 +10,7 @@ const boardFQBNs = {
   sensebox: "arduino:avr:uno",
   "sensebox-esp32s2": "esp32:esp32:sensebox_mcu_esp32s2",
   "sensebox_mcu_eye": "esp32:esp32:sensebox_eye",
+  "xiao-esp32s3": "esp32:esp32:XIAO_ESP32S3",
 };
 
 const validBoards = Object.keys(boardFQBNs);
@@ -19,6 +20,7 @@ export const boardBinaryFileextensions = {
   sensebox: "hex",
   "sensebox-esp32s2": "bin",
   "sensebox_mcu_eye": "bin",
+  "xiao-esp32s3": "bin",
 };
 
 export const payloadValidator = function payloadValidator(req, res, next) {

@@ -1,4 +1,5 @@
 import server from "../src/index.js";
+import { payloadValidator, boardBinaryFileextensions } from "../src/builder.js";
 import request from "./setup.js";
 
 describe("Compiler", () => {
@@ -52,10 +53,35 @@ describe("Compiler", () => {
           res.body.should.have
             .property("message")
             .eql(
-              "Invalid board parameter. Valid values are: sensebox-mcu,sensebox,sensebox-esp32s2,sensebox_mcu_eye"
+              "Invalid board parameter. Valid values are: sensebox-mcu,sensebox,sensebox-esp32s2,sensebox_mcu_eye,xiao-esp32s3"
             );
           done();
         });
+    });
+
+    it("should accept xiao-esp32s3 as a valid board", (done) => {
+      const req = {
+        headers: { "content-type": "application/json" },
+        body: {
+          board: "xiao-esp32s3",
+          sketch: "void setup() {} void loop() {}",
+        },
+      };
+
+      payloadValidator(req, {}, (err) => {
+        if (err) {
+          return done(err);
+        }
+        req._builderParams.should.eql({
+          board: "xiao-esp32s3",
+          sketch: "void setup() {} void loop() {}",
+        });
+        done();
+      });
+    });
+
+    it("should use .bin downloads for xiao-esp32s3", () => {
+      boardBinaryFileextensions["xiao-esp32s3"].should.eql("bin");
     });
 
     it("should reject request with wrong Content-Type", (done) => {
